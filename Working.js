@@ -172,3 +172,4 @@ speedSlider.addEventListener('input', (e) => {
 // Initial render
 renderArray();
 
+//create array....................

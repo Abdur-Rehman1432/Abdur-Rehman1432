@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Array Visualization</title>
+
+    <link rel="stylesheet" href="Custom.css">
+    <link rel="stylesheet" href="Array.css">
+
+</head>
+<body>
+    <div class="main-container">
+        <div class="sidebar">
+            <div class="flex items-center space-x-2 pb-6 border-b border-gray-200 mb-6">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="#3c83f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-book-open h-8 w-8 text-primary">
+                    <path d="M12 7v14"></path>
+                    <path
+                        d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z">
+                    </path>
+                </svg>
+                <span class="text-3xl font-bold text-gray-800">ArrayViz</span>
+            </div>
+            <div class="sidebar-item active">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-eye mr-3 h-5 w-5">
+                    <path
+                        d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0">
+                    </path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+                <div data-page="dashboard">
+                   <a href="Array.html"> <div class="">Dashboard</div>
+                    <div class="text-xs opacity-75">Array Visualization</div></a>
+                </div>
+            </div>
+            <div class="sidebar-item">
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                </svg>
+                <div data-page="create-array">
+                    <a href="create-array.html"><div class="">Create Array</div>
+                    <div class="text-xs opacity-75">Initialize new array</div></a>
+                </div>
+            </div>
+            <div class="sidebar-item">
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                </svg>
+                <div data-page="insert-element">
+                    <a href="insert-element.html"><div class="">Insert Element</div>
+                    <div class="text-xs opacity-75">Add elements</div></a>
+                </div>
+            </div>
+            <div class="sidebar-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-minus mr-3 h-5 w-5">
+                    <path d="M5 12h14"></path>
+                </svg>
+                <div data-page="delete-element">
+                    <a href="delete-element.html"><div class="">Delete Element</div>
+                    <div class="text-xs opacity-75">Remove elements</div></a>
+                </div>
+            </div>
+            <div class="sidebar-item">
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                </svg>
+                <div data-page="update-element">
+                    <div class="">Update Element</div>
+                    <div class="text-xs opacity-75">Modify elements</div>
+                </div>
+            </div>
+            <div class="sidebar-item">
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3h3m-3 0h-3v-3" />
+                </svg>
+                <div data-page="search-sort">
+                    <div class="">Search & Sort</div>
+                    <div class="text-xs opacity-75">Algorithm visualization</div>
+                </div>
+            </div>
+            <div class="sidebar-item">
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M10 20l4-16m4 4l4-4-4-4M6 16l-4 4 4 4" />
+                </svg>
+                <div data-page="view-code">
+                    <div class="">View Code</div>
+                    <div class="text-xs opacity-75">Code examples</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-area">
+            <div id="dashboard-page" class="page active">
+                </div>
+            <div id="create-array-page" class="page hidden">
+                </div>
+        </div>
+         <!-- Main Content Area -->
+        <div class="content-area">
+            <header class="flex justify-between items-center mb-6">
+                <h1 class="text-3xl font-bold text-gray-800">Interactive Array Visualization</h1>
+                <div class="flex items-center space-x-2">
+                    <a href="#" class="text-blue-600 font-semibold flex items-center">
+                        <svg class="w-5 h-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M14.752 11.168l-3.197 2.132A1 1 0 0010 14.289v-4.578a1 1 0 011.555-.832l3.197 2.132a1 1 0 010 1.664z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        Demo Mode
+                    </a>
+                </div>
+            </header>
+    </div>
+
+    <script src="Working.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</body>
+</html>
