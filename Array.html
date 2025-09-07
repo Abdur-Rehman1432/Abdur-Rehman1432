@@ -1,447 +1,216 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Interactive Array Visualization</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Array Visualization</title>
 
-  <!-- Your existing CSS -->
-  <link rel="stylesheet" href="Custom.css">
-  <link rel="stylesheet" href="Array.css">
+    <!-- Css Link -->
+    <link rel="stylesheet" href="Custom.css">
+    <link rel="stylesheet" href="Array.css">
 
-  <!-- CodeMirror (C++ editor) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css"/>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/clike/clike.min.js"></script>
-
-  <style>
-    /* Editor ko fixed height do */
-    .CodeMirror { height: 320px; border-radius: 8px; }
-  </style>
 </head>
+
 <body>
-  <div class="main-container">
-    <!-- Sidebar (aapka as-is) -->
-    <div class="sidebar">
-      <div class="flex items-center space-x-2 pb-6 border-b border-gray-200 mb-6">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#3c83f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-8 w-8">
-          <path d="M12 7v14"></path>
-          <path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"></path>
-        </svg>
-        <span class="text-3xl font-bold text-gray-800">ArrayViz</span>
-      </div>
 
-      <a href="Array.html" class="sidebar-item active">
-        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" class="mr-3 h-5 w-5">
-          <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path>
-          <circle cx="12" cy="12" r="3"></circle>
-        </svg>
-        <div>
-          <div>Dashboard</div>
-          <div class="text-xs opacity-75">Array Visualization</div>
-        </div>
-      </a>
-
-      <a href="create-array.html" class="sidebar-item">
-        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
-        </svg>
-        <div>
-          <div>Create Array</div>
-          <div class="text-xs opacity-75">Initialize new array</div>
-        </div>
-      </a>
-
-      <a href="insert-element.html" class="sidebar-item">
-        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
-        </svg>
-        <div>
-          <div>Insert Element</div>
-          <div class="text-xs opacity-75">Add elements</div>
-        </div>
-      </a>
-
-      <a href="delete-element.html" class="sidebar-item">
-        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" class="mr-3 h-5 w-5">
-          <path d="M5 12h14"></path>
-        </svg>
-        <div>
-          <div>Delete Element</div>
-          <div class="text-xs opacity-75">Remove elements</div>
-        </div>
-      </a>
-
-      <a href="update-element.html" class="sidebar-item">
-        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
-        </svg>
-        <div>
-          <div>Update Element</div>
-          <div class="text-xs opacity-75">Modify elements</div>
-        </div>
-      </a>
-
-      <a href="search-sort.html" class="sidebar-item">
-        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3h3m-3 0h-3v-3"/>
-        </svg>
-        <div>
-          <div>Search & Sort</div>
-          <div class="text-xs opacity-75">Algorithm visualization</div>
-        </div>
-      </a>
-
-      <a href="view-code.html" class="sidebar-item">
-        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4-4-4-4M6 16l-4 4 4 4"/>
-        </svg>
-        <div>
-          <div>View Code</div>
-          <div class="text-xs opacity-75">Code examples</div>
-        </div>
-      </a>
-    </div>
-
-    <!-- Main Content -->
-    <div class="content-area">
-      <header class="flex justify-between items-center mb-6">
-        <h1 class="text-3xl font-bold text-gray-800">Interactive Array Visualization</h1>
-        <div class="flex items-center space-x-2">
-          <a href="#" class="text-blue-600 font-semibold flex items-center">
-            <svg class="w-5 h-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197 2.132A1 1 0 0010 14.289v-4.578a1 1 0 011.555-.832l3.197 2.132a1 1 0 010 1.664z"/>
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-            Demo Mode
-          </a>
-        </div>
-      </header>
-
-      <!-- Two Panels -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-
-        <!-- LEFT: C++ Editor -->
-        <div class="panel bg-gray-900 text-white rounded-lg shadow-lg p-4">
-          <h2 class="text-2xl font-bold mb-4 text-white">C++ Code Editor</h2>
-          <textarea id="cpp-editor">
-// Example: Declare an array in C++
-#include <iostream>
-using namespace std;
-
-int main() {
-    int arr[5] = {10, 20, 30, 40, 50};
-    return 0;
-}
-          </textarea>
-          <button id="run-code" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-            Run Visualization
-          </button>
-        </div>
-
-        <!-- RIGHT: Visualization -->
-        <div class="panel">
-          <h2 class="text-2xl font-bold mb-4 text-gray-800">Array Visualization</h2>
-          <div class="flex justify-between items-center mb-6">
-            <span class="text-gray-600 font-semibold">Array Elements</span>
-            <span id="array-size" class="text-gray-500 text-sm">Size: 0 elements</span>
-          </div>
-
-          <div id="array-visual" class="array-container"><!-- JS renders boxes --></div>
-
-          <div class="flex justify-center items-center mt-6 controls-panel">
-            <div class="flex space-x-4">
-              <button id="play-btn"
-                class="flex items-center px-3 py-1.5 border border-gray-300 rounded-md bg-white text-sm text-gray-800 hover:bg-gray-100 transition">
-                <!-- keep these icons so JS works -->
-                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20" id="play-icon">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+    <div class="main-container">
+        <!-- Left Sidebar -->
+        <div class="sidebar">
+            <div class="flex items-center space-x-2 pb-6 border-b border-gray-200 mb-6">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="#3c83f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-book-open h-8 w-8 text-primary">
+                    <path d="M12 7v14"></path>
+                    <path
+                        d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z">
+                    </path>
                 </svg>
-                <svg class="w-5 h-5 mr-2 hidden" fill="currentColor" viewBox="0 0 20 20" id="pause-icon">
-                  <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm4 0a1 1 0 012 0v4a1 1 0 11-2 0V8z" clip-rule="evenodd" />
+                <span class="text-3xl font-bold text-gray-800">ArrayViz</span>
+            </div>
+            <a href="Array.html" class="sidebar-item active">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-eye mr-3 h-5 w-5">
+                    <path
+                        d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0">
+                    </path>
+                    <circle cx="12" cy="12" r="3"></circle>
                 </svg>
-                <span id="play-text">Play</span>
-              </button>
+                <div>
+                    <div class="">Dashboard</div>
+                    <div class="text-xs opacity-75">Array Visualization</div>
+                </div>
+            </a>
+            <a href="create-array.html" class="sidebar-item">
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                </svg>
+                <div>
+                    <div class="">Create Array</div>
+                    <div class="text-xs opacity-75">Initialize new array</div>
+                </div>
+            </a>
+            <a href="insert-element.html" class="sidebar-item">
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                </svg>
+                <div>
+                   <div class="">Insert Element</div>
+                    <div class="text-xs opacity-75">Add elements</div>
+                </div>
+            </a>
+            <a href="delete-element.html" class="sidebar-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-minus mr-3 h-5 w-5">
+                    <path d="M5 12h14"></path>
+                </svg>
+                <div>
+                    <div class="">Delete Element</div>
+                    <div class="text-xs opacity-75">Remove elements</div>
+                </div>
+            </a>
+            <a class="sidebar-item">
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                </svg>
+                <div>
+                    <div class="">Update Element</div>
+                    <div class="text-xs opacity-75">Modify elements</div>
+                </div>
+            </a>
+            <a class="sidebar-item">
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3h3m-3 0h-3v-3" />
+                </svg>
+                <div>
+                    <div class="">Search & Sort</div>
+                    <div class="text-xs opacity-75">Algorithm visualization</div>
+                </div>
+            </a>
+            <a class="sidebar-item">
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M10 20l4-16m4 4l4-4-4-4M6 16l-4 4 4 4" />
+                </svg>
+                <div>
+                    <div class="">View Code</div>
+                    <div class="text-xs opacity-75">Code examples</div>
+                </div>
+            </a>
+        </div>
 
-              <button id="step-btn"
-                class="flex items-center px-3 py-1.5 border border-gray-300 rounded-md bg-white text-sm text-gray-800 hover:bg-gray-100 transition">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4 mr-2">
-                  <polygon points="5 4 15 12 5 20 5 4"></polygon>
-                  <line x1="19" x2="19" y1="5" y2="19"></line>
-                </svg>
-                Step
-              </button>
+        <!-- Main Content Area -->
+        <div class="content-area">
+            <header class="flex justify-between items-center mb-6">
+                <h1 class="text-3xl font-bold text-gray-800">Interactive Array Visualization</h1>
+                <div class="flex items-center space-x-2">
+                    <a href="#" class="text-blue-600 font-semibold flex items-center">
+                        <svg class="w-5 h-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M14.752 11.168l-3.197 2.132A1 1 0 0010 14.289v-4.578a1 1 0 011.555-.832l3.197 2.132a1 1 0 010 1.664z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        Demo Mode
+                    </a>
+                </div>
+            </header>
 
-              <button id="reset-btn"
-                class="flex items-center px-3 py-1.5 border border-gray-300 rounded-md bg-white text-sm text-gray-800 hover:bg-gray-100 transition">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4 mr-2">
-                  <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
-                  <path d="M3 3v5h5"></path>
-                </svg>
-                Reset
-              </button>
+            <!-- Array Visualization Panel -->
+            <div class="panel">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">Array Visualization</h2>
+                <div class="flex justify-between items-center mb-6">
+                    <span class="text-gray-600 font-semibold">Array Elements</span>
+                    <span id="array-size" class="text-gray-500 text-sm">Size: 0 elements</span>
+                </div>
+                <div id="array-visual" class="array-container">
+                    <!-- Array boxes will be rendered here by JS -->
+                </div>
+                <div class="flex justify-center items-center mt-6 controls-panel">
+                    <div class="flex space-x-4">
+                        <button id="play-btn"
+                            class="flex items-center px-3 py-1.5 border border-gray-300 rounded-md bg-white text-sm text-gray-800 hover:bg-gray-100 transition">
+                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20" id="play-icon">
+                                <path fill-rule="evenodd"
+                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            <svg class="w-5 h-5 mr-2 hidden" fill="currentColor" viewBox="0 0 20 20" id="pause-icon">
+                                <path fill-rule="evenodd"
+                                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm4 0a1 1 0 012 0v4a1 1 0 11-2 0V8z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            <span id="play-text">Play</span>
+                        </button>
+
+                        <button id="step-btn"
+                            class="flex items-center px-3 py-1.5 border border-gray-300 rounded-md bg-white text-sm text-gray-800 hover:bg-gray-100 transition">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="lucide lucide-skip-forward h-4 w-4 mr-2">
+                                <polygon points="5 4 15 12 5 20 5 4"></polygon>
+                                <line x1="19" x2="19" y1="5" y2="19"></line>
+                            </svg> Step
+                        </button>
+                        <button id="reset-btn"
+                            class="flex items-center px-3 py-1.5 border border-gray-300 rounded-md bg-white text-sm text-gray-800 hover:bg-gray-100 transition">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="lucide lucide-rotate-ccw h-4 w-4 mr-2">
+                                <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                                <path d="M3 3v5h5"></path>
+                            </svg> Reset
+                        </button>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <span class="text-sm text-gray-600">Speed:</span>
+                        <input type="range" id="speed-slider" min="100" max="2000" value="800">
+                        <span id="speed-value" class="text-sm text-gray-600">800ms</span>
+                    </div>
+                </div>
             </div>
 
-            <div class="flex items-center space-x-2">
-              <span class="text-sm text-gray-600">Speed:</span>
-              <input type="range" id="speed-slider" min="100" max="2000" value="800">
-              <span id="speed-value" class="text-sm text-gray-600">800ms</span>
+            <!-- Lower Panels -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Quick Add Element -->
+                <div class="panel">
+                    <h3 class="text-lg font-semibold mb-2 text-gray-800">Quick Add Element</h3>
+                    <div class="flex space-x-2">
+                        <input type="number" id="add-input" placeholder="Enter value"
+                            class="flex-grow px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <button id="add-btn"
+                            class="flex items-center px-3 py-2 border border-gray-300 rounded-md bg-white text-sm text-gray-800 hover:bg-gray-100 transition">Add</button>
+                    </div>
+                </div>
+                <!-- Array Operations -->
+                <div class="panel">
+                    <h3 class="text-lg font-semibold mb-2 text-gray-800">Array Operations</h3>
+                    <button id="shuffle-btn"
+                        class="w-full px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300 transition">Shuffle
+                        Array</button>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
 
-      <!-- Quick Add / Shuffle (optional; works with same data) -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-6">
-        <div class="panel">
-          <h3 class="text-lg font-semibold mb-2 text-gray-800">Quick Add Element</h3>
-          <div class="flex space-x-2">
-            <input type="number" id="add-input" placeholder="Enter value"
-              class="flex-grow px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-            <button id="add-btn"
-              class="flex items-center px-3 py-2 border border-gray-300 rounded-md bg-white text-sm text-gray-800 hover:bg-gray-100 transition">Add</button>
-          </div>
-        </div>
+            <!-- Learning Tip -->
+            <div class="panel bg-green-50 border-l-4">
+                <h3 class="text-lg font-semibold text-green-700 text-center">Learning Tip</h3>
+                <p class="text-green-800 text-sm mt-1 text-center">Use the animation controls to step through algorithms
+                    slowly and understand how array operations work. The highlighted elements show which positions are
+                    currently being processed.</p>
+            </div>
 
-        <div class="panel">
-          <h3 class="text-lg font-semibold mb-2 text-gray-800">Array Operations</h3>
-          <button id="shuffle-btn" class="w-full px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300 transition">
-            Shuffle Array
-          </button>
         </div>
-      </div>
-
-      <div class="panel bg-green-50 border-l-4">
-        <h3 class="text-lg font-semibold text-green-700 text-center">Learning Tip</h3>
-        <p class="text-green-800 text-sm mt-1 text-center">
-          “Run Visualization” ke baad Play/Step controls se algorithm ko dheere dheere dekhein.
-        </p>
-      </div>
     </div>
-  </div>
 
-  <!-- Tailwind (if you use it elsewhere) -->
-  <script src="https://cdn.tailwindcss.com"></script>
+    <script src="Working.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- ===== App Script (no Working.js needed) ===== -->
-  <script>
-    // ========================== DOMS ==========================
-    const arrayVisual = document.getElementById('array-visual');
-    const arraySizeSpan = document.getElementById('array-size');
-    const addInput = document.getElementById('add-input');
-    const addBtn = document.getElementById('add-btn');
-    const shuffleBtn = document.getElementById('shuffle-btn');
-    const playBtn = document.getElementById('play-btn');
-    const stepBtn = document.getElementById('step-btn');
-    const resetBtn = document.getElementById('reset-btn');
-    const speedSlider = document.getElementById('speed-slider');
-    const speedValueSpan = document.getElementById('speed-value');
-
-    const playIcon = playBtn.querySelector('#play-icon');
-    const pauseIcon = playBtn.querySelector('#pause-icon');
-    const playText = playBtn.querySelector('#play-text');
-
-    // ========================== STATE ==========================
-    const DEFAULT_ARRAY = [64, 34, 25, 12, 22, 11, 90];
-    let arrayData = [...DEFAULT_ARRAY];
-    let animationSpeed = 800;
-    let isSorting = false;
-    let sortGenerator = null;
-    let timeoutId = null;
-
-    speedSlider.value = animationSpeed;
-    speedValueSpan.textContent = animationSpeed + 'ms';
-
-    // ========================== RENDER ==========================
-    function renderArray() {
-      arrayVisual.innerHTML = '';
-      arrayData.forEach((value, index) => {
-        const wrapper = document.createElement('div');
-        wrapper.className = 'array-box-wrapper';
-        wrapper.innerHTML = `
-          <div class="array-box">${value}</div>
-          <div class="array-index">[${index}]</div>
-        `;
-        arrayVisual.appendChild(wrapper);
-      });
-      arraySizeSpan.textContent = 'Size: ' + arrayData.length + ' elements';
-    }
-
-    // ========================== CONTROLS ==========================
-    function stopSorting() {
-      isSorting = false;
-      clearTimeout(timeoutId);
-      sortGenerator = null;
-      playBtn.classList.remove('active-play-btn');
-      if (playIcon) playIcon.classList.remove('hidden');
-      if (pauseIcon) pauseIcon.classList.add('hidden');
-      if (playText) playText.textContent = 'Play';
-    }
-
-    function* bubbleSortGenerator() {
-      const n = arrayData.length;
-      let boxes = arrayVisual.querySelectorAll('.array-box');
-
-      for (let i = 0; i < n - 1; i++) {
-        for (let j = 0; j < n - i - 1; j++) {
-          boxes = arrayVisual.querySelectorAll('.array-box');
-          boxes[j].classList.add('highlight-compare');
-          boxes[j + 1].classList.add('highlight-swap');
-          yield;
-
-          if (arrayData[j] > arrayData[j + 1]) {
-            [arrayData[j], arrayData[j + 1]] = [arrayData[j + 1], arrayData[j]];
-            renderArray();
-            boxes = arrayVisual.querySelectorAll('.array-box');
-            boxes[j].classList.add('highlight-swap');
-            boxes[j + 1].classList.add('highlight-swap');
-            yield;
-          }
-
-          boxes[j].classList.remove('highlight-compare', 'highlight-swap');
-          boxes[j + 1].classList.remove('highlight-compare', 'highlight-swap');
-        }
-        boxes = arrayVisual.querySelectorAll('.array-box');
-        for (let k = 0; k <= i; k++) boxes[k].classList.add('highlight-sorted');
-      }
-      if (n > 0) {
-        boxes = arrayVisual.querySelectorAll('.array-box');
-        boxes[n - 1].classList.add('highlight-sorted');
-      }
-    }
-
-    function startSorting() {
-      if (!sortGenerator) sortGenerator = bubbleSortGenerator();
-      isSorting = true;
-      playBtn.classList.add('active-play-btn');
-      if (playIcon) playIcon.classList.add('hidden');
-      if (pauseIcon) pauseIcon.classList.remove('hidden');
-      if (playText) playText.textContent = 'Pause';
-      stepSort();
-    }
-
-    function pauseSorting() {
-      isSorting = false;
-      clearTimeout(timeoutId);
-      playBtn.classList.remove('active-play-btn');
-      if (playIcon) playIcon.classList.remove('hidden');
-      if (pauseIcon) pauseIcon.classList.add('hidden');
-      if (playText) playText.textContent = 'Play';
-    }
-
-    function toggleSort() {
-      if (!isSorting) startSorting();
-      else pauseSorting();
-    }
-
-    function stepSort() {
-      if (!isSorting) return;
-      const { done } = sortGenerator.next();
-      if (done) {
-        isSorting = false;
-        sortGenerator = null;
-        playBtn.classList.remove('active-play-btn');
-        if (playIcon) playIcon.classList.remove('hidden');
-        if (pauseIcon) pauseIcon.classList.add('hidden');
-        if (playText) playText.textContent = 'Play';
-      } else {
-        timeoutId = setTimeout(stepSort, animationSpeed);
-      }
-    }
-
-    function stepManual() {
-      if (isSorting) pauseSorting();
-      if (!sortGenerator) sortGenerator = bubbleSortGenerator();
-      const { done } = sortGenerator.next();
-      if (done) {
-        isSorting = false;
-        sortGenerator = null;
-      }
-    }
-
-    function resetArray() {
-      stopSorting();
-      arrayData = [...DEFAULT_ARRAY];
-      renderArray();
-    }
-
-    function addElement() {
-      if (isSorting) stopSorting();
-      const value = parseInt(addInput.value);
-      if (isNaN(value)) return;
-      arrayData.push(value);
-      renderArray();
-      addInput.value = '';
-    }
-
-    function shuffleArray() {
-      if (isSorting) stopSorting();
-      for (let i = arrayData.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [arrayData[i], arrayData[j]] = [arrayData[j], arrayData[i]];
-      }
-      renderArray();
-    }
-
-    speedSlider.addEventListener('input', e => {
-      animationSpeed = parseInt(e.target.value);
-      speedValueSpan.textContent = animationSpeed + 'ms';
-    });
-
-    addBtn?.addEventListener('click', addElement);
-    shuffleBtn?.addEventListener('click', shuffleArray);
-    resetBtn?.addEventListener('click', resetArray);
-    playBtn?.addEventListener('click', toggleSort);
-    stepBtn?.addEventListener('click', stepManual);
-
-    // ========================== C++ Editor + Parser ==========================
-    const cppEditor = CodeMirror.fromTextArea(document.getElementById('cpp-editor'), {
-      mode: 'text/x-c++src',
-      lineNumbers: true,
-      matchBrackets: true,
-      autoCloseBrackets: true
-    });
-
-    // Parse C++ array: supports "int a[5] = {1,2}" or "int a[] = {1,2}"
-    function parseCppArray(code) {
-      // remove comments
-      code = code.replace(/\/\/.*|\/\*[\s\S]*?\*\//g, '');
-      // regex (s flag to allow newlines in initializer)
-      const re = /int\s+\w+\s*\[\s*(\d*)\s*\]\s*=\s*{([\s\S]*?)}/m;
-      const m = code.match(re);
-      if (!m) return null;
-
-      const sizeStr = m[1]; // may be ''
-      const list = m[2]
-        .split(',')
-        .map(s => s.trim())
-        .filter(s => s.length)
-        .map(v => parseInt(v, 10))
-        .map(v => (Number.isFinite(v) ? v : 0));
-
-      const size = sizeStr ? parseInt(sizeStr, 10) : list.length;
-      const arr =
-        list.length >= size ? list.slice(0, size) : list.concat(Array(size - list.length).fill(0));
-      return arr;
-    }
-
-    document.getElementById('run-code').addEventListener('click', () => {
-      const code = cppEditor.getValue();
-      const parsed = parseCppArray(code);
-      if (!parsed) {
-        alert('No valid C++ int array found. Example: int arr[5] = {10,20,30,40,50};');
-        return;
-      }
-      // IMPORTANT: update data used by sorter + reset highlights
-      stopSorting();
-      arrayData = parsed;
-      renderArray();
-      // scroll to visualization (mobile UX)
-      document.getElementById('array-visual').scrollIntoView({ behavior: 'smooth', block: 'center' });
-    });
-
-    // initial draw
-    renderArray();
-  </script>
 </body>
+
 </html>

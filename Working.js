@@ -229,42 +229,4 @@ speedSlider.addEventListener('input', (e) => {
 });
 
 // ========================== INITIAL RENDER ==========================
-// Initialize CodeMirror editor
-var cppEditor = CodeMirror.fromTextArea(document.getElementById("cpp-editor"), {
-  mode: "text/x-c++src",
-  theme: "default",
-  lineNumbers: true,
-  autoCloseBrackets: true,
-  matchBrackets: true,
-});
-
-// Run visualization on button click
-document.getElementById("run-code").addEventListener("click", function () {
-  const code = cppEditor.getValue();
-
-  // Simple parsing: check if array is declared in code
-  const match = code.match(/int\s+(\w+)\[(\d+)\]\s*=\s*{([^}]*)}/);
-  const container = document.getElementById("array-visual");
-  container.innerHTML = "";
-
-  if (match) {
-    const size = parseInt(match[2]);
-    const values = match[3].split(",").map(v => v.trim());
-
-    document.getElementById("array-size").textContent =
-      "Size: " + size + " elements";
-
-    values.forEach((val, i) => {
-      const box = document.createElement("div");
-      box.className =
-        "w-12 h-12 flex items-center justify-center border border-blue-600 rounded text-blue-600 font-bold";
-      box.textContent = val || 0;
-      container.appendChild(box);
-    });
-  } else {
-    alert("No valid C++ array found in the code!");
-  }
-});
-
-
-
+renderArray();

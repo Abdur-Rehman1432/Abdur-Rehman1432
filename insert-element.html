@@ -1,361 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Insert Element - Array Visualization</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Array Visualization</title>
 
-  <link rel="stylesheet" href="Custom.css" />
-  <link rel="stylesheet" href="Array.css" />
-  <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="Custom.css">
+    <link rel="stylesheet" href="Array.css">
+
 </head>
-<body class="font-base bg-gray-100 text-gray-900">
-  <div class="main-container flex">
-    <!-- Sidebar -->
-    <div class="sidebar">
-      <div class="flex items-center space-x-2 pb-6 border-b border-gray-200 mb-6">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#3c83f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-8 w-8">
-          <path d="M12 7v14"></path>
-          <path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"></path>
-        </svg>
-        <span class="text-3xl font-bold text-gray-800">ArrayViz</span>
-      </div>
-
-      <a href="Array.html" class="sidebar-item">
-        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" class="mr-3 h-5 w-5">
-          <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path>
-          <circle cx="12" cy="12" r="3"></circle>
-        </svg>
-        <div>
-          <div>Dashboard</div>
-          <div class="text-xs opacity-75">Array Visualization</div>
+<body>
+    <div class="main-container">
+        <div class="sidebar">
+            <div class="flex items-center space-x-2 pb-6 border-b border-gray-200 mb-6">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="#3c83f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-book-open h-8 w-8 text-primary">
+                    <path d="M12 7v14"></path>
+                    <path
+                        d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z">
+                    </path>
+                </svg>
+                <span class="text-3xl font-bold text-gray-800">ArrayViz</span>
+            </div>
+            <div class="sidebar-item active">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-eye mr-3 h-5 w-5">
+                    <path
+                        d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0">
+                    </path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+                <div data-page="dashboard">
+                   <a href="Array.html"> <div class="">Dashboard</div>
+                    <div class="text-xs opacity-75">Array Visualization</div></a>
+                </div>
+            </div>
+            <div class="sidebar-item">
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                </svg>
+                <div data-page="create-array">
+                    <a href="create-array.html"><div class="">Create Array</div>
+                    <div class="text-xs opacity-75">Initialize new array</div></a>
+                </div>
+            </div>
+            <div class="sidebar-item">
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                </svg>
+                <div data-page="insert-element">
+                    <a href="insert-element.html"><div class="">Create Array</div>
+                    <div class="text-xs opacity-75">Initialize new array</div></a>
+                </div>
+            </div>
+            <div class="sidebar-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-minus mr-3 h-5 w-5">
+                    <path d="M5 12h14"></path>
+                </svg>
+                <div data-page="delete-element">
+                    <a href="delete-element.html"><div class="">Delete Element</div>
+                    <div class="text-xs opacity-75">Remove elements</div></a>
+                </div>
+            </div>
+            <div class="sidebar-item">
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                </svg>
+                <div data-page="update-element">
+                    <div class="">Update Element</div>
+                    <div class="text-xs opacity-75">Modify elements</div>
+                </div>
+            </div>
+            <div class="sidebar-item">
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3h3m-3 0h-3v-3" />
+                </svg>
+                <div data-page="search-sort">
+                    <div class="">Search & Sort</div>
+                    <div class="text-xs opacity-75">Algorithm visualization</div>
+                </div>
+            </div>
+            <div class="sidebar-item">
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M10 20l4-16m4 4l4-4-4-4M6 16l-4 4 4 4" />
+                </svg>
+                <div data-page="view-code">
+                    <div class="">View Code</div>
+                    <div class="text-xs opacity-75">Code examples</div>
+                </div>
+            </div>
         </div>
-      </a>
 
-      <a href="create-array.html" class="sidebar-item">
-        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
-        </svg>
-        <div>
-          <div>Create Array</div>
-          <div class="text-xs opacity-75">Initialize new array</div>
+        <div class="content-area">
+            <div id="dashboard-page" class="page active">
+                </div>
+            <div id="create-array-page" class="page hidden">
+                </div>
         </div>
-      </a>
-
-      <a href="insert-element.html" class="sidebar-item active">
-        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
-        </svg>
-        <div>
-          <div>Insert Element</div>
-          <div class="text-xs opacity-75">Add elements</div>
-        </div>
-      </a>
-
-      <a href="delete-element.html" class="sidebar-item">
-        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" class="mr-3 h-5 w-5">
-          <path d="M5 12h14"></path>
-        </svg>
-        <div>
-          <div>Delete Element</div>
-          <div class="text-xs opacity-75">Remove elements</div>
-        </div>
-      </a>
-
-      <a href="update-element.html" class="sidebar-item">
-        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
-        </svg>
-        <div>
-          <div>Update Element</div>
-          <div class="text-xs opacity-75">Modify elements</div>
-        </div>
-      </a>
-
-      <a href="search-sort.html" class="sidebar-item">
-        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3h3m-3 0h-3v-3"/>
-        </svg>
-        <div>
-          <div>Search & Sort</div>
-          <div class="text-xs opacity-75">Algorithm visualization</div>
-        </div>
-      </a>
-
-      <a href="view-code.html" class="sidebar-item">
-        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4-4-4-4M6 16l-4 4 4 4"/>
-        </svg>
-        <div>
-          <div>View Code</div>
-          <div class="text-xs opacity-75">Code examples</div>
-        </div>
-      </a>
+         <!-- Main Content Area -->
+        <div class="content-area">
+            <header class="flex justify-between items-center mb-6">
+                <h1 class="text-3xl font-bold text-gray-800">Interactive Array Visualization</h1>
+                <div class="flex items-center space-x-2">
+                    <a href="#" class="text-blue-600 font-semibold flex items-center">
+                        <svg class="w-5 h-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M14.752 11.168l-3.197 2.132A1 1 0 0010 14.289v-4.578a1 1 0 011.555-.832l3.197 2.132a1 1 0 010 1.664z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        Demo Mode
+                    </a>
+                </div>
+            </header>
     </div>
 
- <!-- Main Content -->
-    <div class="content-area flex-1 p-6">
-      <!-- Header -->
-      <header class="flex justify-between items-center mb-6">
-        <h1 class="text-3xl font-bold text-gray-800">Interactive Array Visualization</h1>
-        <div class="flex items-center space-x-2">
-          <a href="#" class="text-blue-600 font-semibold flex items-center">
-            <svg class="w-5 h-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M14.752 11.168l-3.197 2.132A1 1 0 0010 14.289v-4.578a1 1 0 011.555-.832l3.197 2.132a1 1 0 010 1.664z" />
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            Demo Mode
-          </a>
-        </div>
-      </header>
-
-      <!-- GRID: Left Code Panel + Right Insert Panel -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        
-        <!-- LEFT: C++ Code Panel -->
-        <div class="bg-gray-900 text-white rounded-xl shadow p-4">
-          <h2 class="text-2xl font-bold mb-4 text-green-400">C++ Code</h2>
-          <textarea id="cpp-editor" rows="15"
-            class="w-full border border-gray-700 rounded-lg p-3 font-mono text-sm bg-gray-800 text-green-200 focus:outline-none focus:ring-2 focus:ring-green-400"
-            placeholder="// Example&#10;int arr[5] = {10, 20, 30, 40, 50};">
-          </textarea>
-          <div class="flex justify-end mt-3">
-            <button id="run-code-btn"
-              class="bg-green-600 text-white px-4 py-2 rounded-lg shadow hover:bg-green-700">
-              Run Code
-            </button>
-          </div>
-        </div>
-
-        <!-- RIGHT: Insert Element Panel -->
-        <div>
-          <div class="bg-white shadow rounded-xl p-6">
-            <h2 class="text-2xl font-bold mb-2 text-gray-800 flex items-center gap-2">
-              <span class="text-blue-600 text-2xl">+</span> Insert Element
-            </h2>
-            <p class="text-gray-600 mb-4">Add a new element to the array at a specific position</p>
-            <div id="feedback" class="mt-4"></div>
-
-            <!-- Current Array -->
-            <div class="mb-6">
-              <div class="flex items-center justify-between mb-2">
-                <h3 class="font-semibold text-gray-700">Current Array</h3>
-                <span id="array-size" class="text-xs px-2 py-1 rounded-full bg-gray-100 border border-gray-200">Size: 0</span>
-              </div>
-              <div id="current-array" class="flex flex-wrap gap-4 bg-gray-50 p-4 rounded-lg border border-gray-200"></div>
-            </div>
-
-            <!-- Perform Operation -->
-            <div>
-              <h3 class="font-semibold text-gray-700 mb-3">Perform Operation</h3>
-              <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
-                <div>
-                  <label for="element-value" class="block text-sm font-medium mb-1">Element Value</label>
-                  <input id="element-value" type="number" placeholder="Enter value to insert"
-                    class="border p-2 rounded-lg w-full focus:ring-2 focus:ring-blue-400" />
-                </div>
-
-                <div>
-                  <label for="insert-index" class="block text-sm font-medium mb-1">Insert at Index</label>
-                  <select id="insert-index"
-                    class="border p-2 rounded-lg w-full focus:ring-2 focus:ring-blue-400">
-                    <option value="">Choose index...</option>
-                  </select>
-                </div>
-
-                <button id="insert-btn"
-                  class="bg-blue-600 text-white px-4 py-2 rounded-lg shadow hover:bg-blue-700">
-                  + Insert Element
-                </button>
-              </div>
-
-              <div id="feedback" class="mt-4"></div>
-              <!-- Reset button -->
-<div class="flex justify-end mt-4">
-  <button id="reset-btn"
-    class="bg-red-600 text-white px-4 py-2 rounded-lg shadow hover:bg-red-700">
-    🔄 Reset Array
-  </button>
-</div>
-
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mt-6 rounded-lg">
-  <h3 class="font-bold text-yellow-700 mb-2">🔍 Step-by-Step Visualization</h3>
-  <div id="steps-log" class="text-sm text-gray-800 space-y-1"></div>
-</div>
-
-<div class="bg-white shadow rounded-xl p-4 mt-6">
-  <h2 class="text-xl font-bold mb-3 text-gray-800">📊 Array Properties</h2>
-  <ul class="text-gray-700 space-y-2">
-    <li><b>Size:</b> <span id="prop-size">0</span></li>
-    <li><b>First Element:</b> <span id="prop-first">N/A</span></li>
-    <li><b>Last Element:</b> <span id="prop-last">N/A</span></li>
-  </ul>
-</div>
-
-<div class="bg-green-50 border-l-4 border-green-400 p-4 mt-6 rounded-lg">
-  <h2 class="text-lg font-bold text-green-700">⏱ Complexity</h2>
-  <p class="text-gray-700">Insert operation in an array takes <b>O(n)</b> time in the worst case, since all elements after the position must be shifted one step to the right.</p>
-</div>
-
-
-
-         <!-- Learning Tips -->
-          <div class="bg-blue-50 border-l-4 border-blue-400 p-6 mt-6 rounded-lg shadow">
-            <h2 class="text-xl font-bold mb-3 text-blue-700">💡 Learning Tips</h2>
-            <ul class="list-disc list-inside text-gray-700 space-y-2">
-              <li>Arrays store elements in contiguous memory locations.</li>
-              <li><b>Insert</b> shifts elements at and after the index one step to the right.</li>
-              <li><b>Delete</b> shifts elements to the left to fill the gap.</li>
-              <li><b>Update</b> just replaces the value at the selected index.</li>
-              <li>Array indices start from <b>0</b>.</li>
-            </ul>
-          </div>
-    </div>
-  </div>
-
-  <!-- Keep your site JS -->
-  <script src="Working.js"></script>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    let arr = [10, 20, 30, 40, 50];
-
-    const arrayBox = document.getElementById('current-array');
-    const sizeBadge = document.getElementById('array-size');
-    const valueInput = document.getElementById('element-value');
-    const indexSelect = document.getElementById('insert-index');
-    const insertBtn = document.getElementById('insert-btn');
-    const feedback = document.getElementById('feedback');
-    const runCodeBtn = document.getElementById('run-code-btn');
-    const cppEditor = document.getElementById('cpp-editor');
-    const stepsLog = document.getElementById('steps-log');
-    const resetBtn = document.getElementById('reset-btn');
-
-    function renderArray(highlightIndex = null) {
-      arrayBox.innerHTML = '';
-      arr.forEach((val, idx) => {
-        const wrap = document.createElement('div');
-        wrap.className = 'flex flex-col items-center space-y-2';
-
-        const box = document.createElement('div');
-        box.className = 'w-16 h-16 flex items-center justify-center text-lg font-bold rounded-lg border-2 bg-white';
-        if (highlightIndex === idx) {
-          box.classList.add('ring-2', 'ring-blue-400', 'animate-pulse');
-          setTimeout(() => box.classList.remove('animate-pulse'), 900);
-        }
-        box.textContent = val;
-
-        const label = document.createElement('div');
-        label.className = 'text-xs text-gray-500 font-mono';
-        label.textContent = `[${idx}]`;
-
-        wrap.appendChild(box);
-        wrap.appendChild(label);
-        arrayBox.appendChild(wrap);
-      });
-      sizeBadge.textContent = `Size: ${arr.length}`;
-
-      // Update properties
-      document.getElementById('prop-size').textContent = arr.length;
-      document.getElementById('prop-first').textContent = arr[0] ?? 'N/A';
-      document.getElementById('prop-last').textContent = arr[arr.length - 1] ?? 'N/A';
-
-      updateCodePanel();
-    }
-
-    function populateIndexOptions() {
-      indexSelect.innerHTML = '<option value="">Choose index...</option>';
-      for (let i = 0; i <= arr.length; i++) {
-        const opt = document.createElement('option');
-        opt.value = i;
-        opt.textContent = `Index ${i}${i === arr.length ? ' (end)' : ''}`;
-        indexSelect.appendChild(opt);
-      }
-    }
-
-    function showFeedback(type, msg) {
-      feedback.innerHTML =
-        `<div class="border rounded-lg px-3 py-2 ${type === 'success'
-          ? 'bg-green-50 border-green-200 text-green-700'
-          : 'bg-red-50 border-red-200 text-red-700'}">${msg}</div>`;
-    }
-
-    function updateCodePanel() {
-      let code = `#include <iostream>\nusing namespace std;\n\nint main() {\n    int arr[${arr.length}] = { `;
-      code += arr.join(", ");
-      code += " };\n    return 0;\n}";
-      cppEditor.value = code;
-    }
-
-    // Insert button
-    insertBtn.addEventListener('click', () => {
-      const valueStr = valueInput.value.trim();
-      const idxStr = indexSelect.value;
-
-      if (valueStr === '' || isNaN(parseInt(valueStr))) {
-        showFeedback('error', 'Please enter a valid number in Element Value.');
-        return;
-      }
-      if (idxStr === '' || isNaN(parseInt(idxStr))) {
-        showFeedback('error', 'Please choose a valid index.');
-        return;
-      }
-
-      const value = parseInt(valueStr);
-      const index = parseInt(idxStr);
-
-      if (index < 0 || index > arr.length) {
-        showFeedback('error', 'Index out of bounds.');
-        return;
-      }
-
-      arr.splice(index, 0, value);
-      showFeedback('success', `Inserted ${value} at index ${index}.`);
-      renderArray(index);
-      populateIndexOptions();
-
-      valueInput.value = '';
-      indexSelect.value = '';
-    });
-
-    // Run code from editor
-    runCodeBtn.addEventListener('click', () => {
-      let code = cppEditor.value;
-      let match = code.match(/\{([^}]+)\}/); // extract inside { }
-      if (match) {
-        let values = match[1].split(",").map(v => Number(v.trim())).filter(v => !isNaN(v));
-        arr = values;
-        renderArray();
-        populateIndexOptions();
-        showFeedback('success', 'Array initialized from code.');
-      } else {
-        showFeedback('error', 'No valid array found in code.');
-      }
-    });
-
-    // ✅ Reset button
-    resetBtn.addEventListener('click', () => {
-      arr = [];
-      renderArray();
-      populateIndexOptions();
-      stepsLog.innerHTML = '';
-      feedback.innerHTML = '';
-      showFeedback('success', 'Array has been reset.');
-    });
-
-    // Initial paint
-    renderArray();
-    populateIndexOptions();
-  });
-</script>
-
-
-  </script>
+    <script src="Working.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
 </body>
 </html>
