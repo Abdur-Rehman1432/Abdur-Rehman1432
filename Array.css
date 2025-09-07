@@ -28,21 +28,22 @@ body {
     display: flex;
     align-items: center;
     padding: 0.75rem 1rem;
-    margin-bottom: 0.5rem;
     border-radius: 8px;
-    color: #4b5563;
-    transition: all 0.2s;
+    font-weight: 500;
+    color: #4a5568;
+    transition: all 0.2s ease-in-out;
     cursor: pointer;
 }
 
 .sidebar-item:hover {
-    background-color: var(--color-accent);
-    color: black;
+    background-color: #16A249;
+    color: white;
 }
 
-.sidebar-item.active {
-    background-color: var(--bg-primary);
-    color: black;
+.sidebar-item.active-tab {
+    background-color: #3C83F6;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .sidebar-item svg {
@@ -123,18 +124,18 @@ body {
 }
 
 .highlight-compare {
-    background-color: #c4e4ff;
-    border-color: #3b82f6;
+    background-color: #3C83F6;
+    border-color: #3C83F6;
 }
 
 .highlight-swap {
-    background-color: #fff3c4;
-    border-color: #eab308;
+    background-color: #22c55e;
+    border-color: #22c55e;
 }
 
 .highlight-sorted {
     background-color: #b9f5d0;
-    border-color: #22c55e;
+    border-color: #b9f5d0;
 }
 
 @keyframes pulse-add {
@@ -203,4 +204,16 @@ body {
     .controls-panel>div {
         width: 100%;
     }
+}
+
+button:hover {
+    background-color: #16a249 !important;
+    color: white !important;
+    border-color: #16a249 !important;
+}
+
+button.active-play-btn {
+    background-color: #3C83F6 !important;
+    color: white !important;
+    border-color: #3C83F6 !important;
 }
